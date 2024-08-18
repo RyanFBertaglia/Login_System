@@ -10,6 +10,5 @@
       "rootDir": "./src"               // Diretório raiz dos arquivos TypeScript
     },
     "include": ["src/**/*"],           // Inclui todos os arquivos .ts dentro do diretório src
-    "exclude": ["node_modules"]        // Exclui o diretório node_modules
   }
   
