@@ -1,15 +1,11 @@
-// Abre a rota pública
 import mongoose from "mongoose";
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import User from "./model/User";
 
-
 dotenv.config();
-
 const app = express();
 app.use(express.json());
-//import User from './model/User';
 
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASS;
@@ -32,12 +28,16 @@ try {
     app.post("/auth/register", async (req: Request, res: Response)=> {
         const {name, email, senha} = req.body
 
-    //validações de dados
     if(!name){
         return res.status(422).json({msg: "O nome é obrigatório"})
     }
     if(!email){
         return res.status(422).json({msg: "O email é obrigatório"})
+    }
+    const testaUser = await User.findOne({email: email});
+        
+    if(testaUser != email){
+        return res.status(422).json({msg: "Usuário existente"});
     }
     if(!senha){
         return res.status(422).json({msg: "A senha é obrigatória"})
@@ -50,4 +50,14 @@ try {
     } catch (err) {
         res.status(500).json({ msg: 'Erro ao criar usuário', error: err });
     }})
-    
+    app.get("/auth/login", async (req: Request, res: Response)=>{
+        const {email, senha} = req.body;
+        const procUser = await User.where(email).equals(email).where(senha).equals(senha);
+        
+        if(!procUser){
+            res.status(500).json({msg: "Usuário ou senha não coincidem"});
+        }
+        else{
+            res.status(201).json({msg: "Seja bem vindo!"});
+        }
+    })
