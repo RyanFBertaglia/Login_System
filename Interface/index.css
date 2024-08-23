@@ -1,20 +1,55 @@
-#container {
-    position: relative;
+.background {
+    background-color: blueviolet;
+    background-size: cover;
     width: 100%;
-    height: 100%;
-    filter: blur(4px);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-body{
-    background-color: #D5CABD;
+
+.blurred-form {
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    color: #fff;
 }
-#formulario {
-    left: 50%;
-    position: absolute;
-    transform: translateX(-50%);
-    margin-top: 30%;
-    padding: 100px;
-    border: 2.5px solid black;
-    border-radius: 20%;
-    filter: none;
+
+.blurred-form h2,
+.blurred-form label {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.blurred-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.blurred-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.blurred-form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.blurred-form button:hover {
+    background: rgba(255, 255, 255, 0.5);
 }

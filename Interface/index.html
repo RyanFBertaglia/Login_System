@@ -7,21 +7,17 @@
     <title>Login/Cadastro</title>
 </head>
 <body>
-    <div id="container">
-    <div id="formulario">
-    <form class="login100-form validate-form">
-        <span>
-        Log in
-        </span>
-        <div>
-        <input type="text" placeholder="Username">
-        </div>
-        <input type="password" placeholder="Password">
-        <button>
-        Login
-        </button>
+    <div class="background">
+        <form action = "/Interface/front.js" method="get" calss="blurred-form">
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            
+            <button type="submit">Login</button>
         </form>
-    </div>
-</div>
+    </div>    
 </body>
 </html>
