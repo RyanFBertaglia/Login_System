@@ -4,18 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
-
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
+        
+        var formData = new FormData(form);
+        var formDataentri = Object.fromEntries(formData);
+        var formDatajson = JSON.stringify(formDataentri);
+        console.log(formDatajson);
 
             try {
                 // Enviar os dados para o servidor via fetch
                 const response = await fetch('http://localhost:3000/auth/register', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'application/json' // Definindo o tipo de conteúdo
                     },
-                    body: JSON.stringify(data), // Enviar os dados no corpo da requisição
+                    body: formDatajson, // Enviar os dados no corpo da requisição
+                    mode: 'cors'
                 });
 
                 // Tratar a resposta do servidor

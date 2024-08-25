@@ -2,9 +2,11 @@ import mongoose from "mongoose";
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import User from "./model/User";
+import cors from 'cors';
 
 dotenv.config();
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 const dbUser = process.env.DB_USER;
@@ -27,7 +29,7 @@ try {
     });
     app.post("/auth/register", async (req: Request, res: Response)=> {
         const {name, email, senha} = req.body
-
+        console.log(req.body);
     if(!name){
         return res.status(422).json({msg: "O nome é obrigatório"})
     }
