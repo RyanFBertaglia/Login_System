@@ -8,16 +8,20 @@
 </head>
 <body>
     <div class="background">
-        <form action = "/Interface/front.js" method="get" calss="blurred-form">
+        <form id="userForm" class="blurred-form">
             <h2>Login</h2>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
+            <label for="name">Username:</label>
+            <input type="text" id="name" name="name">
+        
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
             
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="senha">
             
             <button type="submit">Login</button>
         </form>
     </div>    
+<script src="front.js"></script>
 </body>
 </html>
