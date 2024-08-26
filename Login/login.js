@@ -8,28 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
         var formData = new FormData(form);
         var formDataentri = Object.fromEntries(formData);
         var formDatajson = JSON.stringify(formDataentri);
-        console.log(formDatajson);
 
             try {
-                // Enviar os dados para o servidor via fetch
-                const response = await fetch('http://localhost:3000/auth/register', {
+                const response = await fetch('http://localhost:3000/auth/login', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json' // Definindo o tipo de conteúdo
+                        'Content-Type': 'application/json'
                     },
-                    body: formDatajson, // Enviar os dados no corpo da requisição
+                    body: formDatajson,
                     mode: 'cors'
                 });
 
-                // Tratar a resposta do servidor
                 if (response.ok) {
                     const result = await response.json();
-                    console.log('Sucesso:', result); // Exibir a resposta no console
-                    alert('Usuário cadastrado com sucesso!'); // Alerta para o usuário
-                } else {
-                    console.error('Erro:', response.statusText);
-                    alert('Ocorreu um erro ao cadastrar o usuário.');
+                    console.log('Sucesso:', result);
+                    alert('Login efetuado com sucesso!');
                 }
+
             } catch (error) {
                 console.error('Erro:', error);
                 alert('Erro ao conectar com o servidor.');

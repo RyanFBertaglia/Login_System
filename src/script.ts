@@ -24,23 +24,20 @@ try {
     console.error('Erro ao conectar ao banco: ', err);
 }
 
-    app.get('/', (req: Request, res: Response) => {
-        res.status(200).json({ msg: 'Bem vindo ao Banco de Dados' });
-    });
     app.post("/auth/register", async (req: Request, res: Response)=> {
         const {name, email, senha} = req.body
-        console.log(req.body);
     if(!name){
         return res.status(422).json({msg: "O nome é obrigatório"})
     }
     if(!email){
         return res.status(422).json({msg: "O email é obrigatório"})
     }
-    const testaUser = await User.findOne({email: email});
-        
-    if(testaUser != email){
-        return res.status(422).json({msg: "Usuário existente"});
-    }
+
+    const testaUser = await User.findOne({ email });
+        if (testaUser) {
+            return res.status(422).json({ msg: "Usuário existente" });
+        }
+
     if(!senha){
         return res.status(422).json({msg: "A senha é obrigatória"})
     }
@@ -54,7 +51,7 @@ try {
     }})
 
 
-    app.get("/auth/login", async (req: Request, res: Response)=>{
+    app.post("/auth/login", async (req: Request, res: Response)=>{
         const {email, senha} = req.body;
         const procUser = await User.where(email).equals(email).where(senha).equals(senha);
         
