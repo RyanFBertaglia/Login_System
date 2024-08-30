@@ -53,11 +53,16 @@ try {
 
     app.post("/auth/login", async (req: Request, res: Response)=>{
         const {email, senha} = req.body;
-        const procUser = await User.where(email).equals(email).where(senha).equals(senha);
+        const procUser = await User.findOne({ email });
+        //const procUser = await User.where(email).equals(email).where(senha).equals(senha);
+        //const procUser1 = User.find({'email': email, 'senha': senha})
         
-        if(!procUser){
+        /*if(procUser != undefined){
             res.status(500).json({msg: "Usuário ou senha não coincidem"});
-        }
+        }*/
+        if (!procUser || procUser.senha !== senha) {
+                return res.status(422).json({ msg: "Usuário ou senha não coincidem" });
+            }
         else{
             res.status(201).json({msg: "Seja bem vindo!"});
         }
