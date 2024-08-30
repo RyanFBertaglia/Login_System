@@ -23,7 +23,6 @@ try {
 } catch (err) {
     console.error('Erro ao conectar ao banco: ', err);
 }
-
     app.post("/auth/register", async (req: Request, res: Response)=> {
         const {name, email, senha} = req.body
     if(!name){
@@ -53,13 +52,7 @@ try {
 
     app.post("/auth/login", async (req: Request, res: Response)=>{
         const {email, senha} = req.body;
-        const procUser = await User.findOne({ email });
-        //const procUser = await User.where(email).equals(email).where(senha).equals(senha);
-        //const procUser1 = User.find({'email': email, 'senha': senha})
-        
-        /*if(procUser != undefined){
-            res.status(500).json({msg: "Usuário ou senha não coincidem"});
-        }*/
+        const procUser = await User.findOne({'email': req.body.email, 'senha': req.body.senha})
         if (!procUser || procUser.senha !== senha) {
                 return res.status(422).json({ msg: "Usuário ou senha não coincidem" });
             }

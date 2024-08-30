@@ -26,11 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
             } catch (error) {
-                console.error('Erro:', error);
-                alert('Erro ao conectar com o servidor.');
+                alert('Usuário ou senha não encontrados', error);
             }
         });
-    } else {
-        console.error('Formulário não encontrado');
     }
 });
