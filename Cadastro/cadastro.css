@@ -1,8 +1,9 @@
-body{
+body, a{
     text-decoration: none;
     margin: 0;
 	padding: 0;
 	border: 0;
+    font-family: 'Comfortaa','Quicksand';
 }
 
 .background {
@@ -49,6 +50,7 @@ body{
 .buttonEsf {
     width: 100%;
     display: inline-block;
+    font-family: 'Comfortaa','Quicksand';
     padding: 15px;
     border: none;
     border-radius: 6px;
@@ -63,9 +65,7 @@ body{
     background: rgba(255, 255, 255, 0.5);
 }
 
-a{
-    text-decoration: none;
-}
+
 
 #linkLogin{
     display: inline-block;
@@ -73,6 +73,3 @@ a{
     width: 90%;
 
 }
-/*
-#userForm{
-}*/
