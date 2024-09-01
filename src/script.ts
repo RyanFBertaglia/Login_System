@@ -1,8 +1,9 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import User from "./model/User";
 import cors from 'cors';
+import bcrypt from 'bcrypt';
 
 dotenv.config();
 const app = express();
@@ -16,20 +17,21 @@ try {
     mongoose.connect(
         `mongodb+srv://${dbUser}:${dbPassword}@dblogin.cvr34.mongodb.net/?retryWrites=true&w=majority&appName=DBLOGIN`
     );
+
     app.listen(3000, () => {
         console.log('Servidor rodando na porta 3000');
     });
-    console.log('Conectou ao Banco');
-} catch (err) {
+
+}catch (err){
     console.error('Erro ao conectar ao banco: ', err);
-}
+};
     app.post("/auth/register", async (req: Request, res: Response)=> {
         const {name, email, senha} = req.body
     if(!name){
-        return res.status(422).json({msg: "O nome é obrigatório"})
+        return res.status(422).json({msg: "O nome é obrigatório"});
     }
     if(!email){
-        return res.status(422).json({msg: "O email é obrigatório"})
+        return res.status(422).json({msg: "O email é obrigatório"});
     }
 
     const testaUser = await User.findOne({ email });
@@ -38,24 +40,25 @@ try {
         }
 
     if(!senha){
-        return res.status(422).json({msg: "A senha é obrigatória"})
+        return res.status(422).json({msg: "A senha é obrigatória"});
     }
     
-    try {
+    try{
         const novoUsuario = new User({ name, email, senha });
         await novoUsuario.save();
         res.status(201).json({ msg: 'Usuário criado com sucesso!' });
-    } catch (err) {
+    }catch (err){
         res.status(500).json({ msg: 'Erro ao criar usuário', error: err });
-    }})
+    }});
 
 
     app.post("/auth/login", async (req: Request, res: Response)=>{
         const {email, senha} = req.body;
-        const procUser = await User.findOne({'email': req.body.email, 'senha': req.body.senha})
-        if (!procUser || procUser.senha !== senha) {
-                return res.status(422).json({ msg: "Usuário ou senha não coincidem" });
-            }
+        const procUser = await User.findOne({'email': req.body.email});
+        const temNoBancoOuNão = await bcrypt.compare(req.body.senha, procUser.senha);
+        if(!temNoBancoOuNão){
+            return res.status(422).json({ msg: "Usuário ou senha não coincidem" });
+        }
         else{
             res.status(201).json({msg: "Seja bem vindo!"});
         }

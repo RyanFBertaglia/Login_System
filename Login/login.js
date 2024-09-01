@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('userForm');
 
-    if (form) {
+    if (form){
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
         
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         var formDataentri = Object.fromEntries(formData);
         var formDatajson = JSON.stringify(formDataentri);
 
-            try {
+            try{
                 const response = await fetch('http://localhost:3000/auth/login', {
                     method: 'POST',
                     headers: {
@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     mode: 'cors'
                 });
 
-                if (response.ok) {
+                if (response.ok){
                     const result = await response.json();
                     console.log('Sucesso:', result);
                     alert('Login efetuado com sucesso!');
                 }
 
-            } catch (error) {
+            }catch (error){
                 alert('Usuário ou senha não encontrados', error);
             }
         });
