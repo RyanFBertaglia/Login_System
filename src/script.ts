@@ -55,6 +55,9 @@ try {
     app.post("/auth/login", async (req: Request, res: Response)=>{
         const {email, senha} = req.body;
         const procUser = await User.findOne({'email': req.body.email});
+        if(procUser == null){
+             return res.status(422).json({ msg: "Usuário ou senha não coincidem"});
+        }
         const temNoBancoOuNão = await bcrypt.compare(req.body.senha, procUser.senha);
         if(!temNoBancoOuNão){
             return res.status(422).json({ msg: "Usuário ou senha não coincidem" });

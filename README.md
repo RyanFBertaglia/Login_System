@@ -8,3 +8,15 @@ bcrypt to securely encrypt the data
 ```
 ## Through this project, I have learned a lot about NoSQL, encryption, and structured languages.
 
+
+### Login Page
+![Login Page](images/login.png)
+
+## Register Page
+![Register page](images/register.png)
+
+## DataBase Page
+![Database page](images/database.png)
+
+## Start Server
+![Backend side](images/backend.png)
