@@ -28,8 +28,8 @@ try {
 };
 
 
-    app.post("/auth/register", async (req: Request, res: Response)=> {
-        const {name, email, senha} = req.body
+    app.post("/auth/register", async (req: Request, res: Response) => {
+        const {name, email, senha} = req.body;
     if(!name){
         return res.status(422).json({msg: "O nome é obrigatório"});
     }

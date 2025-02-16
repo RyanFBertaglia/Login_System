@@ -26,8 +26,7 @@ body{
     color: #fff;
 }
 
-.blurred-form h2,
-.blurred-form label {
+.blurred-form h2, .blurred-form label {
     color: #fff;
     margin-bottom: 15px;
 }
@@ -42,9 +41,7 @@ body{
     color: #fff;
 }
 
-.blurred-form input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
+.blurred-form input::placeholder { color: rgba(255, 255, 255, 0.7); }
 
 .buttonEsf {
     width: 100%;
@@ -60,9 +57,7 @@ body{
     transition: background 0.3s;
 }
 
-.buttonEsf:hover {
-    background: rgba(255, 255, 255, 0.5);
-}
+.buttonEsf:hover { background: rgba(255, 255, 255, 0.5); }
 
 a{ text-decoration: none; }
 #linkLogin{
