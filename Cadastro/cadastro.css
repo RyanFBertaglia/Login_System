@@ -16,7 +16,6 @@ body, a{
     align-items: center;
 }
 
-
 .blurred-form {
     background: rgba(255, 255, 255, 0.1); 
     backdrop-filter: blur(15px);
@@ -27,8 +26,7 @@ body, a{
     color: #fff;
 }
 
-.blurred-form h2,
-.blurred-form label {
+.blurred-form h2, .blurred-form label {
     color: #fff;
     margin-bottom: 15px;
 }
@@ -71,5 +69,4 @@ body, a{
     display: inline-block;
     text-align: center;   
     width: 90%;
-
 }

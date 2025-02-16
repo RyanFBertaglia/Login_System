@@ -14,6 +14,7 @@ const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASS;
 
 try {
+
     mongoose.connect(
         `mongodb+srv://${dbUser}:${dbPassword}@dblogin.cvr34.mongodb.net/?retryWrites=true&w=majority&appName=DBLOGIN`
     );
@@ -49,7 +50,8 @@ try {
         res.status(201).json({ msg: 'Usuário criado com sucesso!' });
     }catch (err){
         res.status(500).json({ msg: 'Erro ao criar usuário', error: err });
-    }});
+    }}
+    );
 
 
     app.post("/auth/login", async (req: Request, res: Response)=>{

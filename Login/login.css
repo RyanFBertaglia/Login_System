@@ -16,7 +16,6 @@ body{
     align-items: center;
 }
 
-
 .blurred-form {
     background: rgba(255, 255, 255, 0.1); 
     backdrop-filter: blur(15px);
@@ -65,13 +64,9 @@ body{
     background: rgba(255, 255, 255, 0.5);
 }
 
-a{
-    text-decoration: none;
-}
-
+a{ text-decoration: none; }
 #linkLogin{
     display: inline-block;
     text-align: center;   
     width: 90%;
-
 }
