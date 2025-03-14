@@ -2,7 +2,7 @@
 ## This project is a system of Login and Sign up, to make this run I have used some tools as:
 ```
 TypeScript as the main language  
-Express for readable code  
+Express for flexible code  
 MongoDB Atlas as the database  
 bcrypt to securely encrypt the data
 ```
